@@ -1,0 +1,260 @@
+/* ==========================================================
+   HERO
+   ========================================================== */
+.hero {
+  position: relative;
+  padding-top: calc(var(--header-height) + clamp(2rem, 1rem + 4vw, 4.5rem));
+  padding-bottom: var(--space-6);
+  overflow: hidden;
+}
+
+/* Brillos de fondo */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero::before {
+  width: 520px;
+  height: 520px;
+  right: -120px;
+  top: 40px;
+  background: rgba(108, 59, 255, 0.28);
+}
+
+.hero::after {
+  width: 380px;
+  height: 380px;
+  left: -160px;
+  top: 220px;
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.hero__title {
+  font-size: var(--fs-hero);
+  margin-block: var(--space-5) var(--space-5);
+}
+
+.hero__title span {
+  display: inline;
+}
+
+.hero__text {
+  max-width: 34rem;
+  font-size: var(--fs-md);
+  color: var(--color-text-muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+/* ---------- Laptop hecha con CSS ---------- */
+.hero__visual {
+  position: relative;
+  aspect-ratio: 1.18;
+  width: 100%;
+}
+
+.hero__ring {
+  position: absolute;
+  width: 72%;
+  aspect-ratio: 1;
+  right: 2%;
+  top: 2%;
+  border-radius: 50%;
+  padding: 3px;
+  background: conic-gradient(from 200deg, transparent 0deg, #6C3BFF 80deg, #C4B5FD 150deg, #6C3BFF 220deg, transparent 300deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  filter: drop-shadow(0 0 18px rgba(124, 77, 255, 0.85));
+  animation: ring-spin 18s linear infinite;
+}
+
+@keyframes ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.laptop {
+  position: absolute;
+  left: 8%;
+  right: 4%;
+  top: 14%;
+  transform: perspective(1600px) rotateY(-24deg) rotateX(6deg) rotateZ(-1deg);
+  transform-style: preserve-3d;
+  animation: float 7s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+.laptop__lid {
+  aspect-ratio: 16 / 10.2;
+  padding: 2.4%;
+  border-radius: 16px 16px 6px 6px;
+  background: linear-gradient(145deg, #2A2E3F 0%, #12141F 60%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 2px #05060B;
+}
+
+.laptop__screen {
+  position: relative;
+  height: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 20%, #1D1240 0%, #0A0718 70%);
+  display: grid;
+  place-items: center;
+}
+
+.laptop__screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.09) 0%, transparent 35%);
+  pointer-events: none;
+}
+
+.laptop__waves {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: 70%;
+}
+
+.laptop__logo {
+  position: relative;
+  width: 18%;
+  margin-bottom: 14%;
+  filter: drop-shadow(0 0 20px rgba(108, 59, 255, 0.8));
+}
+
+.laptop__base {
+  position: relative;
+  height: 16px;
+  width: 114%;
+  margin-left: -7%;
+  border-radius: 2px 2px 20px 20px;
+  background: linear-gradient(180deg, #5C6175 0%, #2B2F3E 45%, #14161F 100%);
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.7);
+}
+
+.laptop__base::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 16%;
+  height: 6px;
+  transform: translateX(-50%);
+  border-radius: 0 0 8px 8px;
+  background: #1A1C27;
+}
+
+.hero__rock {
+  position: absolute;
+  right: -4%;
+  bottom: 0;
+  width: 70%;
+  height: 22%;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: radial-gradient(ellipse at 50% 0%, #252836 0%, #11131B 55%, transparent 75%);
+  filter: blur(2px);
+  z-index: -1;
+}
+
+/* ---------- Franja de beneficios ---------- */
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: var(--space-7);
+  padding: var(--space-5) 0;
+}
+
+.features__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding-inline: var(--space-4);
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  line-height: 1.35;
+}
+
+.features__item + .features__item {
+  border-left: 1px solid var(--color-border-strong);
+}
+
+.features__icon {
+  width: 28px;
+  height: 28px;
+  color: var(--color-primary-light);
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 960px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero__text {
+    margin-inline: auto;
+  }
+
+  .hero__actions {
+    justify-content: center;
+  }
+
+  .hero__visual {
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: var(--space-5);
+  }
+
+  .features__item:nth-child(3) {
+    border-left: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero__actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .features {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .features__item {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-2);
+  }
+}

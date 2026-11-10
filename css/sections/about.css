@@ -1,0 +1,78 @@
+/* ==========================================================
+   NOSOTROS (banner "Un equipo cercano")
+   ========================================================== */
+.about {
+  padding-top: var(--space-5);
+}
+
+.about__card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-6);
+  padding: clamp(1.75rem, 1rem + 3vw, 3.5rem);
+  border-radius: var(--radius-lg);
+  background: var(--gradient-banner);
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(76, 34, 214, 0.25);
+}
+
+.about__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px circle at 100% 0%, rgba(0, 212, 255, 0.18), transparent 55%);
+  pointer-events: none;
+}
+
+.about__content {
+  position: relative;
+}
+
+.about__title {
+  font-size: var(--fs-xl);
+  max-width: 22rem;
+}
+
+.about__text {
+  margin-block: var(--space-4) var(--space-5);
+  max-width: 28rem;
+  color: rgba(245, 247, 255, 0.85);
+}
+
+.about__visual {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+/* Editor de código decorativo (assets/img/code-editor.svg) */
+.code-window {
+  display: block;
+  width: 112%;
+  max-width: none;
+  height: auto;
+  margin-right: -16%;
+  border-radius: 14px;
+  transform: perspective(1200px) rotateY(-14deg) rotateZ(-3deg);
+  box-shadow: -24px 34px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(108, 59, 255, 0.25);
+  transition: transform 0.6s var(--ease);
+}
+
+.about__card:hover .code-window {
+  transform: perspective(1200px) rotateY(-8deg) rotateZ(-2deg) translateY(-4px);
+}
+
+@media (max-width: 860px) {
+  .about__card {
+    grid-template-columns: 1fr;
+  }
+
+  .code-window {
+    width: 100%;
+    margin-right: -10%;
+  }
+}

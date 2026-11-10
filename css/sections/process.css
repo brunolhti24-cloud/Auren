@@ -1,0 +1,88 @@
+/* ==========================================================
+   NUESTRO PROCESO (línea de tiempo)
+   ========================================================== */
+.process__list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  counter-reset: step;
+}
+
+/* Línea que une los pasos */
+.process__list::before {
+  content: "";
+  position: absolute;
+  top: 19px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light), var(--color-primary));
+  opacity: 0.6;
+}
+
+.process__step {
+  position: relative;
+  text-align: center;
+}
+
+.process__number {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto var(--space-4);
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  box-shadow: 0 0 0 6px rgba(108, 59, 255, 0.18), 0 0 24px rgba(108, 59, 255, 0.7);
+}
+
+.process__title {
+  font-size: var(--fs-base);
+  margin-bottom: var(--space-2);
+}
+
+.process__text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  max-width: 14rem;
+  margin-inline: auto;
+}
+
+/* En móvil la línea de tiempo pasa a vertical */
+@media (max-width: 720px) {
+  .process__list {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .process__list::before {
+    top: 20px;
+    bottom: 20px;
+    left: 19px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-primary-light));
+  }
+
+  .process__step {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    column-gap: var(--space-4);
+    text-align: left;
+  }
+
+  .process__number {
+    grid-row: span 2;
+    margin: 0;
+  }
+
+  .process__text {
+    margin: 0;
+    max-width: none;
+  }
+}

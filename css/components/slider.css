@@ -1,0 +1,120 @@
+/* ==========================================================
+   SLIDER / CARRUSEL (proyectos y testimonios)
+   ========================================================== */
+.slider {
+  position: relative;
+  --per-view: 3;
+  --gap: 1.5rem;
+}
+
+.slider__viewport {
+  overflow: hidden;
+}
+
+.slider__track {
+  display: flex;
+  gap: var(--gap);
+  transition: transform 0.6s var(--ease);
+  will-change: transform;
+}
+
+.slider__slide {
+  flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+  min-width: 0;
+}
+
+/* Separador vertical entre tarjetas, como en el diseño */
+.slider__slide + .slider__slide {
+  position: relative;
+}
+
+.slider__slide + .slider__slide::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--gap) / -2);
+  top: 8%;
+  bottom: 4%;
+  width: 1px;
+  background: var(--color-border);
+}
+
+.slider__arrow {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(22, 26, 46, 0.9);
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text);
+  transition: background var(--transition), border-color var(--transition), opacity var(--transition);
+  z-index: 2;
+}
+
+.slider__arrow [data-icon] {
+  width: 18px;
+  height: 18px;
+}
+
+.slider__arrow:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.slider__arrow:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.slider > .slider__arrow {
+  position: absolute;
+  top: calc(50% - 40px);
+}
+
+.slider__arrow--prev {
+  left: -20px;
+}
+
+.slider__arrow--next {
+  right: -20px;
+}
+
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: var(--space-5);
+}
+
+.slider__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.22);
+  transition: width var(--transition), background var(--transition);
+}
+
+.slider__dot.is-active {
+  width: 22px;
+  background: var(--color-primary-light);
+}
+
+@media (max-width: 960px) {
+  .slider {
+    --per-view: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .slider {
+    --per-view: 1;
+  }
+
+  .slider__arrow--prev {
+    left: -6px;
+  }
+
+  .slider__arrow--next {
+    right: -6px;
+  }
+}

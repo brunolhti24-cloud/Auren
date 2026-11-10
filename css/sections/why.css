@@ -1,0 +1,46 @@
+/* ==========================================================
+   ¿POR QUÉ ELEGIR AUREN?
+   ========================================================== */
+.why {
+  padding-bottom: var(--space-6);
+}
+
+.why__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.why__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  padding: var(--space-5) var(--space-3);
+  border-radius: var(--radius-md);
+  transition: background var(--transition);
+}
+
+.why__item:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.why__icon {
+  width: 34px;
+  height: 34px;
+  color: var(--color-primary-light);
+}
+
+.why__item span {
+  max-width: 12rem;
+}
+
+@media (max-width: 720px) {
+  .why__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+}

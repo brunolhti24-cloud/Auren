@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AUREN | Desarrollo Web Full Stack</title>
+  <meta name="description" content="AUREN diseña y desarrolla páginas web, tiendas en línea y sistemas personalizados que impulsan tu negocio." />
+  <meta name="theme-color" content="#0B0F1A" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+
+  <!-- Fuentes: Sora (títulos) / Manrope (texto) / Inter (UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- =================== HEADER =================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#inicio" class="brand" aria-label="AUREN, ir al inicio">
+        <img src="assets/img/logo-mark.svg" alt="" class="brand__mark" width="40" height="35" />
+        <span class="brand__name">AUREN</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="#inicio" class="nav__link is-active">Inicio</a></li>
+          <li><a href="#servicios" class="nav__link">Servicios</a></li>
+          <li><a href="#proyectos" class="nav__link">Proyectos</a></li>
+          <li><a href="#proceso" class="nav__link">Proceso</a></li>
+          <li><a href="#nosotros" class="nav__link">Nosotros</a></li>
+          <li><a href="#contacto" class="nav__link">Contacto</a></li>
+        </ul>
+        <button class="btn btn--primary btn--sm nav__cta" type="button" data-open-wizard>
+          Cotizar proyecto <i data-icon="arrow-right"></i>
+        </button>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- =================== HERO =================== -->
+    <section class="hero" id="inicio">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <span class="badge reveal"><i data-icon="code"></i> Desarrollo Web Full Stack</span>
+          <h1 class="hero__title reveal">
+            Convertimos tus ideas en
+            <span class="text-gradient-violet">soluciones</span>
+            <span class="text-gradient-blue">web reales</span>
+          </h1>
+          <p class="hero__text reveal">
+            Diseñamos y desarrollamos páginas web, tiendas en línea y sistemas personalizados que impulsan tu negocio.
+          </p>
+          <div class="hero__actions reveal">
+            <button class="btn btn--primary" type="button" data-open-wizard>
+              Cotizar mi proyecto <i data-icon="arrow-right"></i>
+            </button>
+            <a href="#proyectos" class="btn btn--outline">Ver proyectos</a>
+          </div>
+        </div>
+
+        <!-- Laptop construida con CSS (css/sections/hero.css) -->
+        <div class="hero__visual reveal" aria-hidden="true">
+          <div class="hero__ring"></div>
+          <img class="laptop" src="./assets/img/projects/laptop.png">
+          <div class="hero__rock"></div>
+        </div>
+      </div>
+
+      <!-- Franja de beneficios -->
+      <div class="container">
+        <ul class="features reveal">
+          <li class="features__item"><i data-icon="zap" class="features__icon"></i><span>Rápido<br />y eficiente</span></li>
+          <li class="features__item"><i data-icon="code" class="features__icon"></i><span>Desarrollo<br />a la medida</span></li>
+          <li class="features__item"><i data-icon="devices" class="features__icon"></i><span>Diseño moderno<br />y responsivo</span></li>
+          <li class="features__item"><i data-icon="shield-check" class="features__icon"></i><span>Soporte<br />y mantenimiento</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =================== SERVICIOS =================== -->
+    <section class="section services" id="servicios">
+      <div class="container">
+        <header class="section-header reveal">
+          <h2 class="section-title">Servicios</h2>
+          <p class="section-subtitle">Soluciones digitales para cada tipo de negocio.</p>
+        </header>
+
+        <div class="services__grid">
+          <article class="service-card reveal" data-open-wizard="web" tabindex="0" role="button" aria-label="Cotizar un sitio web corporativo">
+            <i data-icon="monitor" class="service-card__icon"></i>
+            <h3 class="service-card__title">Sitios Web Corporativos</h3>
+            <p class="service-card__text">Presencia profesional para tu marca.</p>
+          </article>
+          <article class="service-card reveal" data-open-wizard="ecommerce" tabindex="0" role="button" aria-label="Cotizar una tienda en línea">
+            <i data-icon="cart" class="service-card__icon"></i>
+            <h3 class="service-card__title">Tiendas en Línea (eCommerce)</h3>
+            <p class="service-card__text">Vende tus productos 24/7 de forma segura.</p>
+          </article>
+          <article class="service-card reveal" data-open-wizard="system" tabindex="0" role="button" aria-label="Cotizar un sistema para restaurantes">
+            <i data-icon="utensils" class="service-card__icon"></i>
+            <h3 class="service-card__title">Sistemas para Restaurantes</h3>
+            <p class="service-card__text">Menús digitales, pedidos y gestión de clientes.</p>
+          </article>
+          <article class="service-card reveal" data-open-wizard="system" tabindex="0" role="button" aria-label="Cotizar un desarrollo a la medida">
+            <i data-icon="code" class="service-card__icon"></i>
+            <h3 class="service-card__title">Desarrollo a la Medida</h3>
+            <p class="service-card__text">Sistemas web según las necesidades de tu negocio.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== PROYECTOS =================== -->
+    <section class="section projects" id="proyectos">
+      <div class="container">
+        <header class="section-header section-header--row reveal">
+          <div>
+            <h2 class="section-title">Proyectos recientes</h2>
+            <p class="section-subtitle">Conoce algunos de los proyectos que hemos desarrollado.</p>
+          </div>
+          <a href="#proyectos" class="link-arrow">Ver todos <i data-icon="arrow-right"></i></a>
+        </header>
+
+        <!-- Las tarjetas se generan desde js/data/projects.js -->
+        <div class="slider reveal" data-slider>
+          <button class="slider__arrow slider__arrow--prev" type="button" data-slider-prev aria-label="Proyecto anterior">
+            <i data-icon="chevron-left"></i>
+          </button>
+          <div class="slider__viewport">
+            <ul class="slider__track" id="projects-track" data-slider-track></ul>
+          </div>
+          <button class="slider__arrow slider__arrow--next" type="button" data-slider-next aria-label="Proyecto siguiente">
+            <i data-icon="chevron-right"></i>
+          </button>
+          <div class="slider__dots" data-slider-dots></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== POR QUÉ ELEGIRNOS =================== -->
+    <section class="section why" id="por-que">
+      <div class="container">
+        <header class="section-header reveal">
+          <h2 class="section-title">¿Por qué elegir AUREN?</h2>
+        </header>
+        <ul class="why__grid">
+          <li class="why__item reveal"><i data-icon="star" class="why__icon"></i><span>Calidad y atención personalizada</span></li>
+          <li class="why__item reveal"><i data-icon="layers" class="why__icon"></i><span>Tecnología moderna y escalable</span></li>
+          <li class="why__item reveal"><i data-icon="users" class="why__icon"></i><span>Comunicación clara y constante</span></li>
+          <li class="why__item reveal"><i data-icon="shield-check" class="why__icon"></i><span>Compromiso con tus resultados</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =================== NOSOTROS =================== -->
+    <section class="section about" id="nosotros">
+      <div class="container">
+        <div class="about__card reveal">
+          <div class="about__content">
+            <h2 class="about__title">Un equipo cercano, con visión tecnológica</h2>
+            <p class="about__text">
+              En AUREN combinamos diseño, desarrollo y estrategia para crear soluciones digitales que generan valor real.
+            </p>
+            <a href="#proceso" class="btn btn--light btn--sm">Conoce más sobre nosotros <i data-icon="arrow-right"></i></a>
+          </div>
+          <!-- Editor de código decorativo (imagen SVG) -->
+          <div class="about__visual" aria-hidden="true">
+            <img src="assets/img/code-editor.svg" alt="" class="code-window" width="640" height="470" loading="lazy" />
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== PROCESO =================== -->
+    <section class="section process" id="proceso">
+      <div class="container">
+        <header class="section-header reveal">
+          <h2 class="section-title">Nuestro proceso</h2>
+          <p class="section-subtitle">Así llevamos tu idea de principio a fin.</p>
+        </header>
+        <ol class="process__list">
+          <li class="process__step reveal">
+            <span class="process__number">1</span>
+            <h3 class="process__title">Descubrimiento</h3>
+            <p class="process__text">Entendemos tu idea y objetivos.</p>
+          </li>
+          <li class="process__step reveal">
+            <span class="process__number">2</span>
+            <h3 class="process__title">Propuesta</h3>
+            <p class="process__text">Definimos la solución y el alcance.</p>
+          </li>
+          <li class="process__step reveal">
+            <span class="process__number">3</span>
+            <h3 class="process__title">Desarrollo</h3>
+            <p class="process__text">Construimos tu proyecto con metodologías ágiles.</p>
+          </li>
+          <li class="process__step reveal">
+            <span class="process__number">4</span>
+            <h3 class="process__title">Lanzamiento</h3>
+            <p class="process__text">Publicamos, probamos y te acompañamos.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- =================== TESTIMONIOS =================== -->
+    <section class="section testimonials" id="testimonios">
+      <div class="container">
+        <header class="section-header reveal">
+          <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+        </header>
+        <!-- Los testimonios se generan desde js/data/testimonials.js -->
+        <div class="testimonials__slider reveal" id="testimonials" aria-roledescription="carrusel">
+          <button class="slider__arrow" type="button" data-testimonial-prev aria-label="Testimonio anterior"><i data-icon="chevron-left"></i></button>
+          <div class="testimonials__viewport" aria-live="polite"></div>
+          <button class="slider__arrow" type="button" data-testimonial-next aria-label="Testimonio siguiente"><i data-icon="chevron-right"></i></button>
+          <div class="slider__dots" data-testimonial-dots></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== CTA =================== -->
+    <section class="section cta" id="contacto">
+      <div class="container">
+        <div class="cta__card reveal">
+          <h2 class="cta__title">¿Tienes un proyecto en mente?</h2>
+          <p class="cta__text">Hablemos y llevemos tu idea al siguiente nivel.</p>
+          <button class="btn btn--light" type="button" data-open-wizard>
+            Cotizar mi proyecto <i data-icon="arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =================== FOOTER =================== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#inicio" class="brand" aria-label="AUREN, ir al inicio">
+          <img src="assets/img/logo-mark.svg" alt="" class="brand__mark" width="40" height="35" />
+          <span>
+            <span class="brand__name">AUREN</span>
+            <span class="brand__tagline">Desarrollo Web Full Stack</span>
+          </span>
+        </a>
+        <ul class="footer__social">
+          <li><a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i data-icon="instagram"></i></a></li>
+          <li><a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i data-icon="linkedin"></i></a></li>
+          <li><a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub"><i data-icon="github"></i></a></li>
+        </ul>
+      </div>
+
+      <nav class="footer__col" aria-label="Enlaces">
+        <h3 class="footer__heading">Enlaces</h3>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Servicios">
+        <h3 class="footer__heading">Servicios</h3>
+        <ul>
+          <li><a href="#servicios">Sitios Web</a></li>
+          <li><a href="#servicios">Tiendas en Línea</a></li>
+          <li><a href="#servicios">Sistemas para Restaurantes</a></li>
+          <li><a href="#servicios">Desarrollo a la Medida</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> AUREN. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- =================== WIZARD: COTIZA TU PROYECTO =================== -->
+  <div class="wizard" id="wizard" role="dialog" aria-modal="true" aria-labelledby="wizard-title" hidden>
+    <div class="wizard__backdrop" data-close-wizard></div>
+
+    <div class="wizard__dialog">
+      <button class="wizard__close" type="button" data-close-wizard aria-label="Cerrar">
+        <i data-icon="x"></i>
+      </button>
+
+      <!-- Panel lateral -->
+      <aside class="wizard__aside">
+        <div class="brand brand--sm">
+          <img src="assets/img/logo-mark.svg" alt="" class="brand__mark" width="30" height="26" />
+          <span class="brand__name">AUREN</span>
+        </div>
+        <h2 class="wizard__aside-title">Cotiza tu proyecto</h2>
+        <p class="wizard__aside-text">Cuéntanos sobre tu idea y te enviaremos una propuesta personalizada.</p>
+        <ol class="wizard__steps" id="wizard-steps">
+          <li class="wizard__step-item" data-step-indicator="1"><span class="wizard__step-num">1</span><span>Proyecto</span></li>
+          <li class="wizard__step-item" data-step-indicator="2"><span class="wizard__step-num">2</span><span>Detalles</span></li>
+          <li class="wizard__step-item" data-step-indicator="3"><span class="wizard__step-num">3</span><span>Información</span></li>
+          <li class="wizard__step-item" data-step-indicator="4"><span class="wizard__step-num">4</span><span>Envío</span></li>
+        </ol>
+        <svg class="wizard__aside-waves" viewBox="0 0 300 140" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="aside-wave" x1="0" x2="1">
+              <stop offset="0" stop-color="#6C3BFF" stop-opacity="0" />
+              <stop offset="0.5" stop-color="#A78BFA" />
+              <stop offset="1" stop-color="#00D4FF" stop-opacity=".4" />
+            </linearGradient>
+          </defs>
+          <path d="M0 110 C70 60 140 140 210 80 S290 40 300 50" fill="none" stroke="url(#aside-wave)" stroke-width="2.5" />
+          <path d="M0 120 C80 80 150 150 220 95 S290 60 300 70" fill="none" stroke="url(#aside-wave)" stroke-width="1.5" opacity=".7" />
+          <path d="M0 130 C90 95 160 155 230 110 S290 80 300 90" fill="none" stroke="url(#aside-wave)" stroke-width="1" opacity=".5" />
+        </svg>
+      </aside>
+
+      <!-- Contenido de los pasos -->
+      <form class="wizard__main" id="wizard-form" novalidate>
+        <p class="wizard__counter" id="wizard-counter">Paso 1 de 4</p>
+        <div class="wizard__progress" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="wizard__body">
+          <!-- PASO 1: PROYECTO -->
+          <fieldset class="wizard__panel" data-step="1">
+            <legend class="wizard__title" id="wizard-title">Hablemos de tu proyecto</legend>
+            <p class="wizard__subtitle">Para comenzar, cuéntanos qué tipo de solución necesitas.</p>
+
+            <p class="field__label">Tipo de proyecto <span class="req">*</span></p>
+            <div class="option-grid" id="project-types" role="radiogroup" aria-label="Tipo de proyecto"></div>
+            <p class="field__error" data-error-for="projectType"></p>
+
+            <label class="field__label" for="description">Describe tu idea o necesidades <span class="req">*</span></label>
+            <div class="field">
+              <textarea id="description" name="description" rows="3" maxlength="500"
+                placeholder="Ej. Quiero una página para mi restaurante con menú, reservas y pedidos en línea..."></textarea>
+              <span class="field__counter"><span id="description-count">0</span> / 500</span>
+            </div>
+            <p class="field__error" data-error-for="description"></p>
+          </fieldset>
+
+          <!-- PASO 2: DETALLES -->
+          <fieldset class="wizard__panel" data-step="2" hidden>
+            <legend class="wizard__title">¿Qué funcionalidades necesitas?</legend>
+            <p class="wizard__subtitle">Selecciona todas las que apliquen. Si no estás seguro, te asesoramos.</p>
+
+            <p class="field__label">Funcionalidades <span class="req">*</span></p>
+            <div class="chip-grid" id="features-list"></div>
+            <p class="field__error" data-error-for="features"></p>
+
+            <div class="field-row">
+              <div>
+                <label class="field__label" for="budget">Presupuesto estimado</label>
+                <div class="field field--select">
+                  <select id="budget" name="budget"></select>
+                </div>
+              </div>
+              <div>
+                <label class="field__label" for="timeline">¿Para cuándo lo necesitas?</label>
+                <div class="field field--select">
+                  <select id="timeline" name="timeline"></select>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- PASO 3: INFORMACIÓN -->
+          <fieldset class="wizard__panel" data-step="3" hidden>
+            <legend class="wizard__title">¿Cómo te contactamos?</legend>
+            <p class="wizard__subtitle">Usaremos estos datos solo para enviarte tu propuesta.</p>
+
+            <div class="field-row">
+              <div>
+                <label class="field__label" for="name">Nombre completo <span class="req">*</span></label>
+                <div class="field"><input id="name" name="name" type="text" autocomplete="name" placeholder="Ej. Ana Martínez" /></div>
+                <p class="field__error" data-error-for="name"></p>
+              </div>
+              <div>
+                <label class="field__label" for="company">Empresa o negocio</label>
+                <div class="field"><input id="company" name="company" type="text" autocomplete="organization" placeholder="Opcional" /></div>
+              </div>
+            </div>
+            <div class="field-row">
+              <div>
+                <label class="field__label" for="email">Correo electrónico <span class="req">*</span></label>
+                <div class="field"><input id="email" name="email" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" /></div>
+                <p class="field__error" data-error-for="email"></p>
+              </div>
+              <div>
+                <label class="field__label" for="phone">Teléfono <span class="req">*</span></label>
+                <div class="field"><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Ej. 442 123 4567" /></div>
+                <p class="field__error" data-error-for="phone"></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- PASO 4: ENVÍO -->
+          <fieldset class="wizard__panel" data-step="4" hidden>
+            <legend class="wizard__title">Revisa y envía tu solicitud</legend>
+            <p class="wizard__subtitle">Confirma que todo esté correcto antes de enviarlo.</p>
+
+            <div class="summary" id="wizard-summary"></div>
+
+            <label class="check">
+              <input type="checkbox" id="privacy" name="privacy" />
+              <span class="check__box"><i data-icon="check"></i></span>
+              <span>Acepto que AUREN me contacte para dar seguimiento a mi solicitud.</span>
+            </label>
+            <p class="field__error" data-error-for="privacy"></p>
+          </fieldset>
+
+          <!-- ÉXITO -->
+          <div class="wizard__panel wizard__success" data-step="success" hidden>
+            <div class="wizard__success-icon"><i data-icon="check"></i></div>
+            <h3 class="wizard__title">¡Solicitud enviada!</h3>
+            <p class="wizard__subtitle">
+              Gracias, <strong id="success-name"></strong>. Revisaremos tu proyecto y te enviaremos una propuesta en menos de 24&nbsp;horas hábiles.
+            </p>
+            <p class="wizard__folio">Folio: <strong id="success-folio"></strong></p>
+          </div>
+        </div>
+
+        <footer class="wizard__footer">
+          <button type="button" class="btn btn--ghost" id="wizard-back">Cancelar</button>
+          <button type="submit" class="btn btn--primary" id="wizard-next">
+            <span class="btn__label">Siguiente</span> <i data-icon="arrow-right"></i>
+          </button>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

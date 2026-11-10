@@ -1,0 +1,317 @@
+/* ==========================================================
+   CAMPOS DE FORMULARIO
+   ========================================================== */
+.field__label {
+  display: block;
+  margin: var(--space-5) 0 var(--space-3);
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.req {
+  color: var(--color-danger);
+}
+
+.field {
+  position: relative;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border-strong);
+  font-size: var(--fs-sm);
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 92px;
+  padding-bottom: 1.8rem;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--color-text-soft);
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--color-primary-light);
+  background: rgba(108, 59, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(108, 59, 255, 0.2);
+}
+
+.field.has-error input,
+.field.has-error textarea {
+  border-color: var(--color-danger);
+}
+
+.field__counter {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  font-size: var(--fs-xs);
+  color: var(--color-text-soft);
+  pointer-events: none;
+}
+
+/* Select con flecha personalizada */
+.field--select select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.field--select select option {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.field--select::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--color-text-muted);
+  border-bottom: 2px solid var(--color-text-muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 var(--space-4);
+}
+
+.field__error {
+  min-height: 0;
+  margin-top: 0.4rem;
+  font-size: var(--fs-xs);
+  color: var(--color-danger);
+}
+
+.field__error:empty {
+  display: none;
+}
+
+/* Tarjetas de opción (radio) — Paso 1 */
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.option-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.option-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.option-card__body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-4);
+  border-radius: 14px;
+  border: 1px solid var(--color-border-strong);
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.option-card:hover .option-card__body {
+  border-color: rgba(167, 139, 250, 0.6);
+  transform: translateY(-2px);
+}
+
+.option-card__icon {
+  width: 26px;
+  height: 26px;
+  color: var(--color-primary-soft);
+  margin-bottom: var(--space-4);
+}
+
+.option-card__title {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  line-height: 1.3;
+}
+
+.option-card__text {
+  margin-top: 0.4rem;
+  font-size: var(--fs-xs);
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+/* Círculo del radio */
+.option-card__radio {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-text-muted);
+  transition: border-color var(--transition);
+}
+
+.option-card__radio::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: #fff;
+  transform: scale(0);
+  transition: transform var(--transition);
+}
+
+.option-card input:checked ~ .option-card__body {
+  border-color: var(--color-primary-light);
+  background: linear-gradient(180deg, rgba(108, 59, 255, 0.22), rgba(108, 59, 255, 0.08));
+  box-shadow: 0 0 0 1px var(--color-primary-light), 0 10px 30px rgba(108, 59, 255, 0.25);
+}
+
+.option-card input:checked ~ .option-card__radio {
+  border-color: var(--color-primary-light);
+  background: var(--color-primary);
+}
+
+.option-card input:checked ~ .option-card__radio::after {
+  transform: scale(1);
+}
+
+.option-card input:focus-visible ~ .option-card__body {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Chips (checkbox) — Paso 2 */
+.chip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.chip {
+  position: relative;
+  cursor: pointer;
+}
+
+.chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chip__body {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  height: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border-strong);
+  background: rgba(255, 255, 255, 0.02);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.chip__icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-primary-soft);
+}
+
+.chip:hover .chip__body {
+  border-color: rgba(167, 139, 250, 0.6);
+}
+
+.chip input:checked + .chip__body {
+  border-color: var(--color-primary-light);
+  background: rgba(108, 59, 255, 0.18);
+}
+
+.chip input:focus-visible + .chip__body {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Checkbox de aceptación */
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: var(--space-5);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.check input {
+  position: absolute;
+  opacity: 0;
+}
+
+.check__box {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border-radius: 6px;
+  border: 1.5px solid var(--color-text-muted);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.check__box [data-icon] {
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  color: #fff;
+}
+
+.check input:checked + .check__box {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.check input:checked + .check__box [data-icon] {
+  opacity: 1;
+}
+
+.check input:focus-visible + .check__box {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  .option-grid,
+  .chip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}
