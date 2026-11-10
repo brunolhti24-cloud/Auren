@@ -2,7 +2,9 @@
    TESTIMONIOS — agrega, quita o edita testimonios aquí.
    `avatar` es opcional (ruta a una foto). Si no hay, se usan iniciales.
    ========================================================== */
-export const TESTIMONIALS = [
+import type { Testimonial } from "../types";
+
+export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
       "El equipo de AUREN entendió perfectamente lo que necesitábamos. Nuestro sistema de pedidos nos ha ayudado a ahorrar tiempo y mejorar la experiencia de nuestros clientes.",

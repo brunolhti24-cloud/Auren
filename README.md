@@ -1,14 +1,20 @@
 # AUREN — Sitio web
 
-Sitio web de AUREN (Desarrollo Web Full Stack) hecho con **HTML, CSS y JavaScript puros** (sin frameworks), responsivo y organizado por módulos.
+Sitio web de AUREN (Desarrollo Web Full Stack) hecho con **HTML, CSS y TypeScript** (sin frameworks, compilado con [Vite](https://vitejs.dev)), responsivo y organizado por módulos.
 
-## Cómo abrirlo en VS Code
+## Cómo trabajar en él
 
-1. Descomprime la carpeta y ábrela en VS Code (`Archivo → Abrir carpeta…`).
-2. Instala la extensión **Live Server** (VS Code te la sugerirá automáticamente).
-3. Clic derecho sobre `index.html` → **Open with Live Server**.
+Necesitas [Node.js](https://nodejs.org) 18 o superior.
 
-> ⚠️ El JavaScript usa *módulos ES* (`import/export`), así que **no funciona abriendo `index.html` con doble clic** (`file://`). Siempre usa Live Server o cualquier servidor local.
+```bash
+npm install        # solo la primera vez
+npm run dev        # servidor local con recarga automática (http://localhost:5173)
+npm run typecheck  # revisa los tipos de TypeScript
+npm run build      # genera el sitio final en dist/
+npm run preview    # sirve dist/ para probar el build
+```
+
+> ⚠️ El navegador no entiende TypeScript directamente: abre siempre el sitio con `npm run dev` (no con doble clic sobre `index.html` ni con Live Server).
 
 ## Estructura
 
@@ -26,11 +32,15 @@ auren-web/
 │   ├── layout/                ← header y footer
 │   ├── components/            ← botones, tarjetas, slider, formularios, wizard
 │   └── sections/              ← un archivo por sección de la página
-└── js/
-    ├── main.js                ← Punto de entrada: inicializa los módulos
-    ├── config.js              ← Ajustes (a dónde se envía la cotización, autoplay)
-    ├── data/                  ← CONTENIDO editable: proyectos, testimonios, opciones del wizard
-    └── modules/               ← Lógica: navbar, slider, testimonios, wizard, iconos, animaciones
+├── src/
+│   ├── main.ts                ← Punto de entrada: inicializa los módulos
+│   ├── config.ts              ← Ajustes (a dónde se envía la cotización, autoplay)
+│   ├── types.ts               ← Tipos compartidos (Project, Testimonial, opciones del wizard…)
+│   ├── data/                  ← CONTENIDO editable: proyectos, testimonios, opciones del wizard
+│   └── modules/               ← Lógica: navbar, slider, testimonios, wizard, iconos, animaciones
+├── package.json               ← Scripts (dev, build…) y dependencias
+├── tsconfig.json              ← Configuración de TypeScript (modo estricto)
+└── vite.config.ts             ← Configuración de Vite
 ```
 
 ## Tareas comunes
@@ -38,11 +48,11 @@ auren-web/
 | Quiero…                                   | Edita                                   |
 |-------------------------------------------|-----------------------------------------|
 | Cambiar colores o fuentes                 | `css/base/variables.css`                |
-| Agregar/quitar un proyecto                | `js/data/projects.js`                   |
-| Agregar/quitar un testimonio              | `js/data/testimonials.js`               |
-| Cambiar opciones del wizard               | `js/data/wizard-options.js`             |
-| Recibir las cotizaciones por correo       | `js/config.js` → `FORM_ENDPOINT`        |
-| Usar un icono nuevo                       | `js/modules/icons.js` y `<i data-icon="nombre"></i>` |
+| Agregar/quitar un proyecto                | `src/data/projects.ts` (importa la imagen arriba) |
+| Agregar/quitar un testimonio              | `src/data/testimonials.ts`               |
+| Cambiar opciones del wizard               | `src/data/wizard-options.ts`             |
+| Recibir las cotizaciones por correo       | `src/config.ts` → `FORM_ENDPOINT`       |
+| Usar un icono nuevo                       | `src/modules/icons.ts` y `<i data-icon="nombre"></i>` |
 
 ## Wizard "Cotizar proyecto"
 
@@ -61,11 +71,13 @@ Cada paso se valida antes de avanzar. En el resumen hay botones "Editar" para vo
 Por defecto el envío es **simulado** (la información aparece en la consola del navegador). Para recibirlas en tu correo:
 
 1. Crea un formulario gratis en [formspree.io](https://formspree.io).
-2. Copia tu URL (ej. `https://formspree.io/f/abcd1234`) en `js/config.js`:
-   ```js
+2. Copia tu URL (ej. `https://formspree.io/f/abcd1234`) en `src/config.ts`:
+   ```ts
    FORM_ENDPOINT: "https://formspree.io/f/abcd1234",
    ```
 
 ## Publicarlo
 
-Es un sitio estático: puedes subir la carpeta tal cual a **Netlify**, **Vercel** o **GitHub Pages**.
+Ejecuta `npm run build` y sube el contenido de la carpeta **`dist/`** a **Netlify**, **Vercel** o **GitHub Pages** (las rutas son relativas, funciona en cualquier subcarpeta).
+
+En Netlify/Vercel también puedes conectar el repositorio con: comando de build `npm run build` y carpeta de publicación `dist`.

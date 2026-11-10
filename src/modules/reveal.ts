@@ -2,8 +2,8 @@
    ANIMACIÓN DE APARICIÓN AL HACER SCROLL
    Agrega la clase "reveal" a cualquier elemento para animarlo.
    ========================================================== */
-export function initReveal() {
-  const elements = document.querySelectorAll(".reveal");
+export function initReveal(): void {
+  const elements = document.querySelectorAll<HTMLElement>(".reveal");
 
   if (!("IntersectionObserver" in window)) {
     elements.forEach((el) => el.classList.add("is-visible"));
@@ -23,7 +23,7 @@ export function initReveal() {
 
   elements.forEach((el) => {
     // Pequeño retraso escalonado entre elementos hermanos
-    const siblings = [...el.parentElement.children].filter((c) => c.classList.contains("reveal"));
+    const siblings = [...(el.parentElement?.children ?? [])].filter((c) => c.classList.contains("reveal"));
     el.style.transitionDelay = `${Math.min(siblings.indexOf(el), 5) * 80}ms`;
     observer.observe(el);
   });

@@ -1,11 +1,12 @@
 /* ==========================================================
    SLIDER DE PROYECTOS
-   Los datos vienen de js/data/projects.js
+   Los datos vienen de src/data/projects.ts
    ========================================================== */
-import { PROJECTS } from "../data/projects.js";
-import { escapeHTML, onSwipe } from "./utils.js";
+import { PROJECTS } from "../data/projects";
+import type { Project } from "../types";
+import { closestFromEvent, escapeHTML, onSwipe, qs } from "./utils";
 
-function projectTemplate(project) {
+function projectTemplate(project: Project): string {
   return `
     <li class="slider__slide">
       <a class="project-card" href="${escapeHTML(project.url)}">
@@ -18,23 +19,23 @@ function projectTemplate(project) {
     </li>`;
 }
 
-export function initProjectsSlider() {
-  const slider = document.querySelector("[data-slider]");
+export function initProjectsSlider(): void {
+  const slider = document.querySelector<HTMLElement>("[data-slider]");
   if (!slider) return;
 
-  const track = slider.querySelector("[data-slider-track]");
-  const prev = slider.querySelector("[data-slider-prev]");
-  const next = slider.querySelector("[data-slider-next]");
-  const dotsBox = slider.querySelector("[data-slider-dots]");
+  const track = qs(slider, "[data-slider-track]");
+  const prev = qs<HTMLButtonElement>(slider, "[data-slider-prev]");
+  const next = qs<HTMLButtonElement>(slider, "[data-slider-next]");
+  const dotsBox = qs(slider, "[data-slider-dots]");
 
   track.innerHTML = PROJECTS.map(projectTemplate).join("");
 
   let index = 0;
 
-  const perView = () => parseInt(getComputedStyle(slider).getPropertyValue("--per-view"), 10) || 1;
-  const maxIndex = () => Math.max(0, PROJECTS.length - perView());
+  const perView = (): number => parseInt(getComputedStyle(slider).getPropertyValue("--per-view"), 10) || 1;
+  const maxIndex = (): number => Math.max(0, PROJECTS.length - perView());
 
-  function renderDots() {
+  function renderDots(): void {
     const total = maxIndex() + 1;
     dotsBox.innerHTML = Array.from(
       { length: total },
@@ -43,10 +44,10 @@ export function initProjectsSlider() {
     dotsBox.hidden = total <= 1;
   }
 
-  function update() {
+  function update(): void {
     index = Math.min(Math.max(index, 0), maxIndex());
     const slide = track.children[0];
-    if (!slide) return;
+    if (!(slide instanceof HTMLElement)) return;
     const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
     track.style.transform = `translateX(${-index * (slide.offsetWidth + gap)}px)`;
 
@@ -58,7 +59,7 @@ export function initProjectsSlider() {
     });
   }
 
-  const goTo = (i) => {
+  const goTo = (i: number): void => {
     index = i;
     update();
   };
@@ -66,7 +67,7 @@ export function initProjectsSlider() {
   prev.addEventListener("click", () => goTo(index - 1));
   next.addEventListener("click", () => goTo(index + 1));
   dotsBox.addEventListener("click", (e) => {
-    const dot = e.target.closest(".slider__dot");
+    const dot = closestFromEvent(e, ".slider__dot");
     if (dot) goTo(Number(dot.dataset.index));
   });
 

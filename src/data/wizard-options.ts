@@ -3,9 +3,10 @@
    Edita aquí los tipos de proyecto, funcionalidades,
    presupuestos y plazos sin tocar la lógica.
    ========================================================== */
+import type { Feature, ProjectType, SelectOption } from "../types";
 
 /* Paso 1 — Tipo de proyecto */
-export const PROJECT_TYPES = [
+export const PROJECT_TYPES: ProjectType[] = [
   { id: "web", icon: "laptop", title: "Sitio web corporativo", text: "Presencia profesional para tu negocio" },
   { id: "ecommerce", icon: "cart", title: "Tienda en línea", text: "Vende tus productos en internet" },
   { id: "system", icon: "layers", title: "Sistema web a medida", text: "Una solución personalizada para tus procesos" },
@@ -13,7 +14,7 @@ export const PROJECT_TYPES = [
 ];
 
 /* Paso 2 — Funcionalidades */
-export const FEATURES = [
+export const FEATURES: Feature[] = [
   { id: "reservations", icon: "calendar", label: "Reservaciones" },
   { id: "payments", icon: "credit-card", label: "Pagos en línea" },
   { id: "catalog", icon: "package", label: "Catálogo de productos" },
@@ -28,7 +29,7 @@ export const FEATURES = [
 ];
 
 /* Paso 2 — Presupuesto (MXN) */
-export const BUDGETS = [
+export const BUDGETS: SelectOption[] = [
   { value: "", label: "Selecciona una opción" },
   { value: "<15k", label: "Menos de $15,000" },
   { value: "15k-40k", label: "$15,000 – $40,000" },
@@ -38,7 +39,7 @@ export const BUDGETS = [
 ];
 
 /* Paso 2 — Plazo */
-export const TIMELINES = [
+export const TIMELINES: SelectOption[] = [
   { value: "", label: "Selecciona una opción" },
   { value: "asap", label: "Lo antes posible" },
   { value: "1m", label: "En 1 mes" },

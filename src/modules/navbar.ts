@@ -1,16 +1,16 @@
 /* ==========================================================
    NAVBAR: menú móvil, fondo al hacer scroll y enlace activo
    ========================================================== */
-export function initNavbar() {
+export function initNavbar(): void {
   const header = document.getElementById("header");
   const nav = document.getElementById("nav");
   const toggle = document.getElementById("nav-toggle");
-  const links = [...document.querySelectorAll(".nav__link")];
+  const links = [...document.querySelectorAll<HTMLAnchorElement>(".nav__link")];
 
   if (!header || !nav || !toggle) return;
 
   /* Menú móvil */
-  const setOpen = (open) => {
+  const setOpen = (open: boolean): void => {
     nav.classList.toggle("is-open", open);
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
@@ -20,7 +20,7 @@ export function initNavbar() {
 
   // Cierra el menú al elegir una opción
   nav.addEventListener("click", (e) => {
-    if (e.target.closest("a, button")) setOpen(false);
+    if (e.target instanceof Element && e.target.closest("a, button")) setOpen(false);
   });
 
   document.addEventListener("keydown", (e) => {
@@ -34,8 +34,11 @@ export function initNavbar() {
 
   /* Resalta el enlace de la sección visible */
   const sections = links
-    .map((link) => document.querySelector(link.getAttribute("href")))
-    .filter(Boolean);
+    .map((link) => {
+      const href = link.getAttribute("href");
+      return href?.startsWith("#") && href.length > 1 ? document.querySelector(href) : null;
+    })
+    .filter((section): section is Element => section !== null);
 
   const observer = new IntersectionObserver(
     (entries) => {

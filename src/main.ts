@@ -2,12 +2,12 @@
    AUREN — Punto de entrada de JavaScript
    Cada funcionalidad vive en su propio módulo dentro de /modules.
    ========================================================== */
-import { renderIcons } from "./modules/icons.js";
-import { initNavbar } from "./modules/navbar.js";
-import { initReveal } from "./modules/reveal.js";
-import { initProjectsSlider } from "./modules/projects-slider.js";
-import { initTestimonials } from "./modules/testimonials.js";
-import { initWizard } from "./modules/wizard.js";
+import { renderIcons } from "./modules/icons";
+import { initNavbar } from "./modules/navbar";
+import { initReveal } from "./modules/reveal";
+import { initProjectsSlider } from "./modules/projects-slider";
+import { initTestimonials } from "./modules/testimonials";
+import { initWizard } from "./modules/wizard";
 
 document.documentElement.classList.remove("no-js");
 
@@ -21,4 +21,4 @@ initReveal();
 
 // Año actual en el footer
 const year = document.getElementById("year");
-if (year) year.textContent = new Date().getFullYear();
+if (year) year.textContent = String(new Date().getFullYear());

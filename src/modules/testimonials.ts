@@ -1,12 +1,13 @@
 /* ==========================================================
    CARRUSEL DE TESTIMONIOS
-   Los datos vienen de js/data/testimonials.js
+   Los datos vienen de src/data/testimonials.ts
    ========================================================== */
-import { TESTIMONIALS } from "../data/testimonials.js";
-import { CONFIG } from "../config.js";
-import { escapeHTML, initials, onSwipe, prefersReducedMotion } from "./utils.js";
+import { TESTIMONIALS } from "../data/testimonials";
+import { CONFIG } from "../config";
+import type { Testimonial } from "../types";
+import { closestFromEvent, escapeHTML, initials, onSwipe, prefersReducedMotion, qs } from "./utils";
 
-function testimonialTemplate(t, i) {
+function testimonialTemplate(t: Testimonial, i: number): string {
   const avatar = t.avatar
     ? `<img src="${escapeHTML(t.avatar)}" alt="" />`
     : escapeHTML(initials(t.name));
@@ -25,14 +26,14 @@ function testimonialTemplate(t, i) {
     </figure>`;
 }
 
-export function initTestimonials() {
+export function initTestimonials(): void {
   const root = document.getElementById("testimonials");
   if (!root || !TESTIMONIALS.length) return;
 
-  const viewport = root.querySelector(".testimonials__viewport");
-  const dotsBox = root.querySelector("[data-testimonial-dots]");
-  const prev = root.querySelector("[data-testimonial-prev]");
-  const next = root.querySelector("[data-testimonial-next]");
+  const viewport = qs(root, ".testimonials__viewport");
+  const dotsBox = qs(root, "[data-testimonial-dots]");
+  const prev = qs<HTMLButtonElement>(root, "[data-testimonial-prev]");
+  const next = qs<HTMLButtonElement>(root, "[data-testimonial-next]");
 
   viewport.innerHTML = TESTIMONIALS.map(testimonialTemplate).join("");
   dotsBox.innerHTML = TESTIMONIALS.map(
@@ -42,9 +43,9 @@ export function initTestimonials() {
   const slides = [...viewport.children];
   const dots = [...dotsBox.children];
   let current = 0;
-  let timer = null;
+  let timer: ReturnType<typeof setInterval> | undefined;
 
-  function show(i) {
+  function show(i: number): void {
     current = (i + slides.length) % slides.length;
     slides.forEach((s, idx) => {
       const active = idx === current;
@@ -54,20 +55,20 @@ export function initTestimonials() {
     dots.forEach((d, idx) => d.classList.toggle("is-active", idx === current));
   }
 
-  function startAutoplay() {
+  function startAutoplay(): void {
     if (!CONFIG.TESTIMONIALS_AUTOPLAY || prefersReducedMotion()) return;
     stopAutoplay();
     timer = setInterval(() => show(current + 1), CONFIG.TESTIMONIALS_AUTOPLAY);
   }
 
-  function stopAutoplay() {
+  function stopAutoplay(): void {
     clearInterval(timer);
   }
 
   prev.addEventListener("click", () => { show(current - 1); startAutoplay(); });
   next.addEventListener("click", () => { show(current + 1); startAutoplay(); });
   dotsBox.addEventListener("click", (e) => {
-    const dot = e.target.closest(".slider__dot");
+    const dot = closestFromEvent(e, ".slider__dot");
     if (dot) { show(Number(dot.dataset.index)); startAutoplay(); }
   });
 

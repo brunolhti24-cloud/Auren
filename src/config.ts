@@ -1,7 +1,13 @@
 /* ==========================================================
    CONFIGURACIÓN GENERAL
    ========================================================== */
-export const CONFIG = {
+export interface Config {
+  FORM_ENDPOINT: string;
+  CONTACT_EMAIL: string;
+  TESTIMONIALS_AUTOPLAY: number;
+}
+
+export const CONFIG: Config = {
   /*
    * URL a donde se envía la cotización (método POST, formato JSON).
    * Ejemplo con Formspree (gratis): "https://formspree.io/f/TU_ID"
